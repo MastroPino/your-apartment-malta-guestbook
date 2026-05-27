@@ -1,0 +1,5 @@
+# Static site — no build step. Publish the repository root as-is.
+# These settings take precedence over the Netlify UI build settings.
+[build]
+  command = ""
+  publish = "."
