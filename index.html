@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbf9f6">
+<title>Your Apartment Malta · Guest Book</title>
+<meta name="description" content="Your digital guest book for Your Apartment Malta — check-in, Wi-Fi, house info, local tips and everything you need for a perfect stay in Floriana.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Your Apartment">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f1b16'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23fbf9f6' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=9">
+</head>
+<body>
+
+<!-- ============ SVG ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.2"/><path d="M11 11l8.5 8.5"/><path d="M17 17.5l2-2"/><path d="M14.2 14.7l1.8 1.8"/></symbol>
+    <symbol id="i-arrive" viewBox="0 0 24 24"><path d="M13 3h5a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-5"/><path d="M9.5 8l4 4-4 4"/><path d="M3.5 12h10"/></symbol>
+    <symbol id="i-depart" viewBox="0 0 24 24"><path d="M11 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M16 8l4 4-4 4"/><path d="M10 12h10"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M4.5 10.2a11 11 0 0 1 15 0"/><path d="M7.6 13.4a6.6 6.6 0 0 1 8.8 0"/><path d="M10.4 16.5a2.6 2.6 0 0 1 3.2 0"/><circle cx="12" cy="19.2" r=".9" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24"><path d="M4 11.2 12 5l8 6.2"/><path d="M6 10v9.5h12V10"/><path d="M10.2 19.5V14h3.6v5.5"/></symbol>
+    <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-rules" viewBox="0 0 24 24"><rect x="5.5" y="3" width="13" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></symbol>
+    <symbol id="i-aid" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.4"/><path d="M9 7V5.4A1.4 1.4 0 0 1 10.4 4h3.2A1.4 1.4 0 0 1 15 5.4V7"/><path d="M12 11v5"/><path d="M9.5 13.5h5"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c.8 2.5 2.4 3.7 3.7 5.2A6.2 6.2 0 0 1 17.5 13a5.5 5.5 0 0 1-11 0c0-1.6.6-2.8 1.4-3.8.3 1 1 1.8 1.9 2.1C9.4 8.6 10.6 6.2 12 3z"/><path d="M12 20.5a2.6 2.6 0 0 0 2.6-2.6c0-1.4-1.3-2.2-2.6-3.4-1.3 1.2-2.6 2-2.6 3.4A2.6 2.6 0 0 0 12 20.5z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.2l7 2.4v5.1c0 4.4-3 7.9-7 9.3-4-1.4-7-4.9-7-9.3V5.6z"/><path d="M9 11.6l2.1 2.1L15 9.8"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="14" rx="2.4"/><path d="M5 11h14"/><path d="M8.5 3.5v7.5"/><path d="M15.5 3.5v7.5"/><path d="M8 20.5l-1 .8"/><path d="M16 20.5l1 .8"/><circle cx="8.5" cy="14.3" r=".9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.3" r=".9" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4.5 3.8 6.4v13.1L9 17.6l6 1.9 5.2-1.9V4.5L15 6.4 9 4.5z"/><path d="M9 4.5v13.1"/><path d="M15 6.4v13.1"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5c4-4.2 6.5-7.7 6.5-11A6.5 6.5 0 0 0 5.5 10.5c0 3.3 2.5 6.8 6.5 11z"/><circle cx="12" cy="10.4" r="2.4"/></symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24"><path d="M4.5 9.2 5.6 5h12.8l1.1 4.2"/><path d="M4.5 9.2a2.4 2.4 0 0 0 4.8 0 2.4 2.4 0 0 0 4.8 0 2.4 2.4 0 0 0 4.8 0"/><path d="M5.5 10v9.5h13V10"/><path d="M9.5 19.5V15h5v4.5"/></symbol>
+    <symbol id="i-suitcase" viewBox="0 0 24 24"><rect x="4" y="7.5" width="16" height="12.5" rx="2.4"/><path d="M9 7.5V5.6A1.6 1.6 0 0 1 10.6 4h2.8A1.6 1.6 0 0 1 15 5.6V7.5"/><path d="M9 7.5V20"/><path d="M15 7.5V20"/></symbol>
+    <symbol id="i-qa" viewBox="0 0 24 24"><path d="M4 5.5h10.5A1.8 1.8 0 0 1 16.3 7.3v5A1.8 1.8 0 0 1 14.5 14H9.5L6 17v-3H4A1.8 1.8 0 0 1 2.2 12.2V7.3A1.8 1.8 0 0 1 4 5.5z"/><path d="M8 8.6a1.7 1.7 0 0 1 3 1c0 1-1.3 1.2-1.3 2.2"/><circle cx="9.6" cy="13.3" r=".4" fill="currentColor" stroke="none"/><path d="M18 9.5h1.8A2 2 0 0 1 21.8 11.5v3.2a2 2 0 0 1-2 2v2.3l-2.6-2.3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3.5h3l1.6 4-2.1 1.6a11.5 11.5 0 0 0 5.4 5.4l1.6-2.1 4 1.6v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 5.7 2 2 0 0 1 6 3.5z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3.5 7.5 12 13l8.5-5.5"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5V12l3.2 2"/></symbol>
+    <symbol id="i-park" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.4"/><path d="M10 16.5V8h3.3a2.6 2.6 0 0 1 0 5.2H10"/></symbol>
+    <symbol id="i-temp" viewBox="0 0 24 24"><path d="M14 13.4V6a2 2 0 0 0-4 0v7.4a3.6 3.6 0 1 0 4 0z"/><circle cx="12" cy="16.6" r="1.3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-washer" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.4"/><circle cx="12" cy="13" r="4.4"/><circle cx="12" cy="13" r="1.8"/><path d="M8 6h.5"/><path d="M11 6h.5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14"/><path d="M9 7V5a1.2 1.2 0 0 1 1.2-1.2h3.6A1.2 1.2 0 0 1 15 5v2"/><path d="M7 7l1 13h8l1-13"/><path d="M10.5 11v6"/><path d="M13.5 11v6"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 11.5l1.4-4.2A2 2 0 0 1 8.3 6h7.4a2 2 0 0 1 1.9 1.3L19 11.5"/><path d="M4 11.5h16v5.5H4z"/><circle cx="7.5" cy="17" r="1.6"/><circle cx="16.5" cy="17" r="1.6"/></symbol>
+    <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="6" cy="16" r="3.4"/><circle cx="18" cy="16" r="3.4"/><path d="M6 16l4-7h4.5"/><path d="M9 9h2"/><path d="M14.5 9l3.5 7"/><path d="M10 16h5"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 14.5l-7.5-2 .2 5.2-1.8.9-1-4.2-3.4-.9-2.7 1.6-1.2-.7 2-2.4-2.7-2.2 1.2-.5 3.2 1.2 3.7-1.6 5-2.2a1.7 1.7 0 0 1 2.4 2z"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M5 8.5h11v4.5a4.2 4.2 0 0 1-4.2 4.2H9.2A4.2 4.2 0 0 1 5 13z"/><path d="M16 9.5h2.3a2.1 2.1 0 0 1 0 4.2H16"/><path d="M8 3.2v2"/><path d="M11 3.2v2"/><path d="M5 20.5h11"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/><path d="M3 4.5h2.2l2 11h10.2l1.6-7.5H6.3"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7"/><path d="M8.5 12h7"/></symbol>
+    <symbol id="i-fork" viewBox="0 0 24 24"><path d="M7 3v6"/><path d="M9.6 3v6"/><path d="M4.4 3v3.4a3.1 3.1 0 0 0 6.2 0V3"/><path d="M7.5 9v12"/><path d="M17.5 3c-1.7 1-2.6 3.6-2.6 6.4h2.6"/><path d="M17.5 3v18"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><circle cx="17" cy="6.5" r="2.6"/><path d="M3 15c1.6 0 1.6-1.4 3.2-1.4S7.8 15 9.4 15s1.6-1.4 3.2-1.4S14.2 15 15.8 15s1.6-1.4 3.2-1.4"/><path d="M3 19c1.6 0 1.6-1.4 3.2-1.4S7.8 19 9.4 19s1.6-1.4 3.2-1.4S14.2 19 15.8 19s1.6-1.4 3.2-1.4"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="12.5" cy="4" r="2"/><path d="M12 7.6 10.4 12l2.6 1.7L14 19.5"/><path d="M10.4 12 7.9 14.2l-.7 3.8"/><path d="M10.9 9l3.2 1.5 2-1.3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1L3.2 9.6l6.1-.8z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24"><path d="M8.7 13 6.5 20.5l5.5-2.8 5.5 2.8L20.8 6"/><path d="M8.7 13 5.2 6"/><circle cx="13" cy="8" r="5.4"/><path d="M13 5.2l.86 1.74 1.92.28-1.39 1.35.33 1.91L13 9.6l-1.72.9.33-1.91-1.39-1.35 1.92-.28z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A3.9 3.9 0 0 1 12 7.5 3.9 3.9 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="2"/><path d="M12 7.5V20"/><path d="M7 11H17"/><path d="M5 14a7 7 0 0 0 14 0"/><path d="M5 14H3.5M19 14h1.5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<div id="app">
+
+  <!-- ====================== HOME ====================== -->
+  <section class="screen is-active" id="home">
+    <header class="hero">
+      <p class="eyebrow">Welcome to</p>
+      <h1 class="script hero-title">Your Apartment Malta</h1>
+      <div class="collage">
+        <img class="tall" src="assets/img/apt-chalkboard.jpg" width="760" height="1651" alt="Dining area with a Valletta skyline chalk drawing">
+        <img src="assets/img/apt-living.jpg" width="1100" height="825" alt="Bright double-height living and dining room">
+        <img src="assets/img/apt-dusk.jpg" width="820" height="1093" alt="Plant and a drink on a table by the window at dusk">
+      </div>
+      <p class="hero-tagline script">Enjoy your stay!</p>
+      <p class="hero-address"><svg class="ico"><use href="#i-pin"/></svg> 34, Triq Il-Konservatorju, Floriana</p>
+    </header>
+
+    <nav class="menu" aria-label="Guest book sections">
+      <p class="section-eyebrow">Your guide book</p>
+      <div class="menu-grid">
+        <a class="menu-item" href="#checkin"><span class="menu-ico"><svg class="ico"><use href="#i-key"/></svg></span><span>Check In/Out</span></a>
+        <a class="menu-item" href="#wifi"><span class="menu-ico"><svg class="ico"><use href="#i-wifi"/></svg></span><span>Wifi</span></a>
+        <a class="menu-item" href="#houseinfo"><span class="menu-ico"><svg class="ico"><use href="#i-house"/></svg></span><span>House Info</span></a>
+        <a class="menu-item" href="#kitchen"><span class="menu-ico"><svg class="ico"><use href="#i-plate"/></svg></span><span>Kitchen &amp; Other Areas</span></a>
+        <a class="menu-item" href="#rules"><span class="menu-ico"><svg class="ico"><use href="#i-rules"/></svg></span><span>House Rules</span></a>
+        <a class="menu-item" href="#emergency"><span class="menu-ico"><svg class="ico"><use href="#i-aid"/></svg></span><span>Emergency</span></a>
+        <a class="menu-item" href="#transport"><span class="menu-ico"><svg class="ico"><use href="#i-bus"/></svg></span><span>Transportation</span></a>
+        <a class="menu-item" href="#thingstodo"><span class="menu-ico"><svg class="ico"><use href="#i-map"/></svg></span><span>Things to do</span></a>
+        <a class="menu-item" href="#nearest"><span class="menu-ico"><svg class="ico"><use href="#i-pin"/></svg></span><span>Your Nearest</span></a>
+        <a class="menu-item" href="#eat"><span class="menu-ico"><svg class="ico"><use href="#i-shop"/></svg></span><span>Places To Eat</span></a>
+        <a class="menu-item" href="#beforeyougo"><span class="menu-ico"><svg class="ico"><use href="#i-suitcase"/></svg></span><span>Before You Go</span></a>
+        <a class="menu-item" href="#faq"><span class="menu-ico"><svg class="ico"><use href="#i-qa"/></svg></span><span>Q&amp;A</span></a>
+      </div>
+    </nav>
+
+    <section class="host-block">
+      <p class="section-eyebrow">Meet your host</p>
+      <a class="host-card" href="#host" aria-label="Read more about your host, Dario">
+        <span class="hc-avatar">
+          <img src="assets/img/host.jpg" width="820" height="1092" alt="Dario, your host" loading="lazy">
+          <span class="hc-medal" aria-hidden="true"><svg class="ico"><use href="#i-medal"/></svg></span>
+        </span>
+        <span class="hc-name">Dario</span>
+        <span class="hc-role">Superhost</span>
+        <span class="hc-stats">
+          <span class="hc-stat"><span class="hc-num">9/10</span><span class="hc-lab">Guest rating</span></span>
+          <span class="hc-stat"><span class="hc-num">10<span class="hc-plus">+</span></span><span class="hc-lab">Years hosting</span></span>
+        </span>
+        <span class="hc-quote">&ldquo;For me, hospitality has never been just a profession &mdash; it&rsquo;s a calling.&rdquo;</span>
+        <span class="hc-cta">Read his story <svg class="ico"><use href="#i-chevron"/></svg></span>
+      </a>
+    </section>
+
+    <footer class="home-footer">
+      <p class="script home-footer-script">Enjoy your stay!</p>
+      <div class="contact-row">
+        <a class="contact-pill" href="tel:+35699320097"><svg class="ico"><use href="#i-phone"/></svg> +356 9932 0097</a>
+        <a class="contact-pill" href="mailto:info@yourapartmentmalta.com"><svg class="ico"><use href="#i-mail"/></svg> Email us</a>
+        <a class="contact-pill" href="https://instagram.com/yourapartment.malta" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ig"/></svg> @yourapartment.malta</a>
+      </div>
+      <a class="reviews-link" href="#reviews"><svg class="ico ico--fill"><use href="#i-star"/></svg> Read guest reviews</a>
+      <p class="footer-addr">34, Triq Il-Konservatorju, Floriana · Malta</p>
+    </footer>
+  </section>
+
+  <!-- ====================== HOST ====================== -->
+  <section class="screen" id="host" data-title="Your Host">
+    <div class="page">
+      <p class="eyebrow center">Meet your host</p>
+      <h1 class="page-title center"><span class="script script-lead">Hello,</span><br>I'm Dario</h1>
+      <div class="host-meta">
+        <span class="superhost-pill"><svg class="ico"><use href="#i-medal"/></svg> Superhost</span>
+        <span class="host-meta-stats"><b>9/10</b> guest rating · <b>10+</b> years hosting</span>
+      </div>
+      <img class="rounded full-img" src="assets/img/host.jpg" width="820" height="1092" alt="Dario, your host" loading="lazy">
+      <blockquote class="quote">
+        For me, hospitality has never been just a profession — it is a calling. Over the past decade, I have had the privilege of opening my doors and my heart to travellers from all walks of life, and every single encounter has enriched my journey.
+        <br><br>
+        I truly believe that true hospitality lies in the art of connection. It is about creating a sanctuary of warmth and comfort where language barriers dissolve, and every guest feels instantly valued, cared for, and completely at home.
+        <br><br>
+        No matter how far you have travelled, my door is always open, and you are always welcome.
+      </blockquote>
+      <div class="contact-stack">
+        <a class="contact-line" href="tel:+35699320097"><span class="ci"><svg class="ico"><use href="#i-phone"/></svg></span> +356 9932 0097</a>
+        <a class="contact-line" href="mailto:info@yourapartmentmalta.com"><span class="ci"><svg class="ico"><use href="#i-mail"/></svg></span> info@yourapartmentmalta.com</a>
+        <a class="contact-line" href="https://instagram.com/yourapartment.malta" target="_blank" rel="noopener"><span class="ci"><svg class="ico"><use href="#i-ig"/></svg></span> @yourapartment.malta</a>
+      </div>
+      <p class="closing script">Enjoy your stay!</p>
+    </div>
+  </section>
+
+  <!-- ====================== CHECK IN / OUT ====================== -->
+  <section class="screen" id="checkin" data-title="Check In / Out">
+    <div class="page">
+      <h1 class="page-title center">Check In <span class="amp">&amp;</span> Out</h1>
+      <div class="io-grid">
+        <div class="io-card">
+          <span class="io-ico"><svg class="ico"><use href="#i-arrive"/></svg></span>
+          <span class="io-label">Check in</span>
+          <span class="io-when">from</span>
+          <span class="io-time">3:00 PM</span>
+        </div>
+        <div class="io-card">
+          <span class="io-ico"><svg class="ico"><use href="#i-depart"/></svg></span>
+          <span class="io-label">Check out</span>
+          <span class="io-when">by</span>
+          <span class="io-time">10:00 AM</span>
+        </div>
+      </div>
+      <ul class="info-list io-details">
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-arrive"/></svg></span>
+          <div>
+            <h3>On arrival</h3>
+            <p>I'll meet you at check-in to welcome you and share tips on what to do and visit, so you can perfectly organise your island getaway.</p>
+          </div>
+        </li>
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-depart"/></svg></span>
+          <div>
+            <h3>On departure</h3>
+            <p>If I'm not there to say goodbye, no worries — just:</p>
+            <ul class="checklist io-checklist">
+              <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Turn off the AC and the lights</li>
+              <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Leave the keys on the table</li>
+              <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Close the door behind you</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================== WIFI ====================== -->
+  <section class="screen" id="wifi" data-title="Wifi">
+    <div class="page">
+      <h1 class="page-title center">WiFi</h1>
+      <p class="lead center">Scan to connect — or use the details below.</p>
+      <div class="wifi-qr-card">
+        <div id="wifi-qr" class="wifi-qr" role="img" aria-label="Wi-Fi QR code"></div>
+        <p class="wifi-qr-label">Point your camera here to join</p>
+      </div>
+      <div class="wifi-card">
+        <div class="wifi-row">
+          <span class="wifi-ico"><svg class="ico"><use href="#i-wifi"/></svg></span>
+          <div>
+            <p class="eyebrow">Network name</p>
+            <p class="wifi-value">Your Apartment</p>
+          </div>
+        </div>
+        <div class="hr"></div>
+        <div class="wifi-row">
+          <span class="wifi-ico"><svg class="ico"><use href="#i-key"/></svg></span>
+          <div>
+            <p class="eyebrow">Password</p>
+            <p class="wifi-value" id="wifi-pass">yourapartment85</p>
+          </div>
+          <button class="copy-btn" data-copy="yourapartment85" aria-label="Copy password">
+            <svg class="ico ico-copy"><use href="#i-copy"/></svg>
+            <svg class="ico ico-done"><use href="#i-check"/></svg>
+            <span class="copy-label">Copy</span>
+          </button>
+        </div>
+      </div>
+      <p class="note center">Thanks to our extenders you'll stay connected in the courtyards and on the terraces too.</p>
+    </div>
+  </section>
+
+  <!-- ====================== HOUSE INFO ====================== -->
+  <section class="screen" id="houseinfo" data-title="House Info">
+    <div class="page">
+      <h1 class="page-title center">House Info</h1>
+      <ul class="info-list">
+        <li><span class="li-ico"><svg class="ico"><use href="#i-park"/></svg></span><div><h3>Parking</h3><p>There's no private parking, but you can park for free on the street. Look for a spot with a 1h30 time limit.</p></div></li>
+        <li><span class="li-ico"><svg class="ico"><use href="#i-temp"/></svg></span><div><h3>Temperature</h3><p>The temperature can be adjusted in every room using the air conditioning.</p></div></li>
+        <li><span class="li-ico"><svg class="ico"><use href="#i-washer"/></svg></span><div><h3>Laundry service</h3><p>We provide an express laundry service for an additional price, starting from €15.</p>
+          <a class="inline-action" href="https://wa.me/35699320097" target="_blank" rel="noopener"><svg class="ico"><use href="#i-phone"/></svg> <span class="txt">Request laundry</span></a></div></li>
+        <li><span class="li-ico"><svg class="ico"><use href="#i-trash"/></svg></span><div><h3>Trash &amp; recycling</h3><p>To help us keep the space clean, please use the recycling instructions and trash bags provided in the kitchen.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================== KITCHEN ====================== -->
+  <section class="screen" id="kitchen" data-title="Kitchen &amp; Other Areas">
+    <div class="page">
+      <h1 class="page-title center">Kitchen <span class="amp">&amp;</span> Other Areas</h1>
+      <img class="rounded full-img" src="assets/img/apt-pasta.jpg" width="1100" height="733" alt="Kitchen with chalkboard art and yellow chairs" loading="lazy">
+      <p class="lead">Make yourself completely at home.</p>
+      <p>The kitchen is fully equipped for everything from a quick breakfast to a proper dinner — help yourself to whatever you need.</p>
+
+      <h2 class="sub">In the kitchen</h2>
+      <ul class="amenity-grid">
+        <li><span class="ck"><svg class="ico"><use href="#i-check"/></svg></span> Oven &amp; hob</li>
+        <li><span class="ck"><svg class="ico"><use href="#i-check"/></svg></span> Microwave</li>
+        <li><span class="ck"><svg class="ico"><use href="#i-check"/></svg></span> Dishwasher</li>
+        <li><span class="ck"><svg class="ico"><use href="#i-check"/></svg></span> Kettle &amp; toaster</li>
+      </ul>
+
+      <h2 class="sub">Coffee &amp; tea</h2>
+      <p>A capsule coffee machine is ready to go, and we keep tea, coffee and sugar stocked for you — start your morning just the way you like it.</p>
+
+      <h2 class="sub">Laundry</h2>
+      <p>There's a washing machine in the apartment, so you can run a load whenever you need. Prefer to have it taken care of? Just ask about our express laundry service.</p>
+
+      <p>If you can't find something, or have any question about the appliances or the spaces, just send me a message — I'm always happy to help.</p>
+      <a class="cta" href="https://wa.me/35699320097" target="_blank" rel="noopener"><svg class="ico"><use href="#i-phone"/></svg> Message the host</a>
+    </div>
+  </section>
+
+  <!-- ====================== HOUSE RULES ====================== -->
+  <section class="screen" id="rules" data-title="House Rules">
+    <div class="page">
+      <h1 class="page-title center">House Rules</h1>
+      <div class="duo">
+        <img class="rounded" src="assets/img/apt-living.jpg" width="1100" height="825" alt="Living room" loading="lazy">
+        <img class="rounded" src="assets/img/apt-tulips.jpg" width="820" height="1230" alt="Dining area" loading="lazy">
+      </div>
+      <ul class="rules">
+        <li>No loud noise after 11:00 PM</li>
+        <li>No food or drinks in the bedrooms</li>
+        <li>No parties or events</li>
+        <li>No smoking inside the house</li>
+        <li>No pets allowed</li>
+        <li>Turn off the AC and lights when you go out</li>
+        <li>Please don't rearrange the furniture</li>
+        <li>Respect the check-in and check-out times</li>
+      </ul>
+      <div class="banner">As a Superhost, we aim to make your stay as comfortable as it can possibly be.</div>
+    </div>
+  </section>
+
+  <!-- ====================== EMERGENCY ====================== -->
+  <section class="screen" id="emergency" data-title="Emergency">
+    <div class="page">
+      <h1 class="page-title center">Emergency Info</h1>
+      <a class="emg-hero" href="tel:112">
+        <span class="emg-hero-l">
+          <span class="emg-hero-label">Any emergency · call</span>
+          <span class="emg-hero-num">112</span>
+        </span>
+        <span class="emg-hero-ico"><svg class="ico"><use href="#i-phone"/></svg></span>
+      </a>
+      <div class="emg-list">
+        <div class="emg"><span class="li-ico"><svg class="ico"><use href="#i-cross"/></svg></span><div><h3>Medical Emergency</h3><a class="emg-tel" href="tel:0035625450000">00356 25450000</a><a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Mater+Dei+Hospital+Malta" target="_blank" rel="noopener"><svg class="ico pin"><use href="#i-pin"/></svg> Mater Dei Hospital, L-Imsida <svg class="ico chev"><use href="#i-chevron"/></svg></a></div></div>
+        <div class="emg"><span class="li-ico"><svg class="ico"><use href="#i-flame"/></svg></span><div><h3>Fire &amp; Rescue Unit</h3><a class="emg-tel" href="tel:112">112</a><a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Civil+Protection+Department+Malta" target="_blank" rel="noopener"><svg class="ico pin"><use href="#i-pin"/></svg> Moll Is-Shipwrights, Raħal Ġdid <svg class="ico chev"><use href="#i-chevron"/></svg></a></div></div>
+        <div class="emg"><span class="li-ico"><svg class="ico"><use href="#i-shield"/></svg></span><div><h3>Police Station</h3><a class="emg-tel" href="tel:0035622943121">00356 22943121</a><a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Floriana+Police+Station+Malta" target="_blank" rel="noopener"><svg class="ico pin"><use href="#i-pin"/></svg> Floriana <svg class="ico chev"><use href="#i-chevron"/></svg></a></div></div>
+        <div class="emg"><span class="li-ico"><svg class="ico"><use href="#i-car"/></svg></span><div><h3>Roadside Assistance</h3><a class="emg-tel" href="tel:+35677131071">+356 7713 1071</a><a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Triq+Paolo+Debono+Msida+Malta" target="_blank" rel="noopener"><svg class="ico pin"><use href="#i-pin"/></svg> Triq Paolo Debono, Msida <svg class="ico chev"><use href="#i-chevron"/></svg></a></div></div>
+      </div>
+      <div class="callout"><span class="li-ico"><svg class="ico"><use href="#i-aid"/></svg></span><div><h3>First aid kit</h3><p>A first-aid and emergency kit is available in each apartment.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ====================== TRANSPORT ====================== -->
+  <section class="screen" id="transport" data-title="Transportation">
+    <div class="page">
+      <h1 class="page-title center">Getting Around</h1>
+      <ul class="info-list">
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-car"/></svg></span>
+          <div><h3>Car &amp; scooter rental</h3><p>Available on request — message me for availability and rates.</p>
+            <a class="inline-action" href="https://wa.me/35699320097" target="_blank" rel="noopener"><svg class="ico"><use href="#i-phone"/></svg> <span class="txt">Message to book</span></a></div>
+        </li>
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-bike"/></svg></span>
+          <div><h3>Bicycle rental</h3><p>Available on request — message me for availability and rates.</p>
+            <a class="inline-action" href="https://wa.me/35699320097" target="_blank" rel="noopener"><svg class="ico"><use href="#i-phone"/></svg> <span class="txt">Message to book</span></a></div>
+        </li>
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-bus"/></svg></span>
+          <div><h3>Bus</h3><p>The nearest stop, <em>Floriana Mall</em>, is just 50 metres from the apartment.</p>
+            <a class="inline-action" href="https://www.google.com/maps/search/?api=1&amp;query=Floriana+Mall+bus+stop+Malta" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pin"/></svg> <span class="txt">Directions to the stop</span></a></div>
+        </li>
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-car"/></svg></span>
+          <div><h3>Taxi &amp; ride-hailing</h3><p>Uber, Bolt and eCabs all operate across the island.</p></div>
+        </li>
+        <li>
+          <span class="li-ico"><svg class="ico"><use href="#i-plane"/></svg></span>
+          <div><h3>Airport shuttle</h3><p>Arranged with David — tap to call.</p>
+            <a class="inline-action" href="tel:+35679999690"><svg class="ico"><use href="#i-phone"/></svg> <span class="txt">+356 7999 9690</span></a></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================== THINGS TO DO ====================== -->
+  <section class="screen" id="thingstodo" data-title="Things to do">
+    <div class="page">
+      <h1 class="page-title center">Things to Do</h1>
+      <img class="rounded full-img" src="assets/img/malta-sea.jpg" width="1000" height="1500" alt="Palm tree by the Maltese coast" loading="lazy">
+      <nav class="sec-nav" aria-label="Jump to section">
+        <button class="sec-chip is-active" type="button" data-scroll-to="ttd-exp">Experiences</button>
+        <button class="sec-chip" type="button" data-scroll-to="ttd-see">Places to see</button>
+        <button class="sec-chip" type="button" data-scroll-to="ttd-visit">Must visit</button>
+      </nav>
+      <div class="ttd-sec" id="ttd-exp">
+      <h2 class="sub">Experiences</h2>
+      <div class="stack-cards">
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-anchor"/></svg></span><div><h3>Sailing around Malta</h3><p>Spend a day with us aboard <em>Ela</em>, sailing the Maltese coast and tasting a traditional Italian aperitif.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-wave"/></svg></span><div><h3>Comino &amp; Blue Lagoon</h3><p>A tiny island between Malta and Gozo, named after the cumin seed, with crystal-clear turquoise water and only two permanent residents.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-sun"/></svg></span><div><h3>St. Peter's Pool</h3><p>A natural swimming bay on the Delimara Peninsula, popular for snorkelling, with a small cave on its western end.</p></div></div>
+      </div>
+
+      </div>
+      <div class="ttd-sec" id="ttd-see">
+      <h2 class="sub">Places to see</h2>
+      <div class="stack-cards">
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-pin"/></svg></span><div><h3>Valletta</h3><p>The capital and a UNESCO World Heritage site, famed for its Baroque architecture, grid streets and the fortifications of the Knights of St. John.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-pin"/></svg></span><div><h3>The Three Cities</h3><p>Vittoriosa, Senglea and Cospicua — historic fortified towns across the Grand Harbour showing a quieter, authentic side of Maltese life.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-pin"/></svg></span><div><h3>Marsaxlokk</h3><p>The traditional fishing village, known for its colourful <em>luzzu</em> boats and bustling Sunday market — a fantastic spot for fresh seafood.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-pin"/></svg></span><div><h3>Mdina</h3><p>The ancient capital, the "Silent City", known for its medieval alleys and panoramic views from the bastions.</p></div></div>
+      </div>
+
+      </div>
+      <div class="ttd-sec" id="ttd-visit">
+      <h2 class="sub">Must visit</h2>
+      <div class="stack-cards">
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-eye"/></svg></span><div><h3>St. John's Co-Cathedral</h3><p>In Valletta, with an opulent interior and Caravaggio masterpieces, including <em>The Beheading of Saint John the Baptist</em>.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-eye"/></svg></span><div><h3>The National War Museum</h3><p>At Fort St. Elmo — a thorough look at Malta's military history, World War Two and the awarding of the George Cross.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-eye"/></svg></span><div><h3>Popeye Village</h3><p>Originally the set of the 1980 film with Robin Williams; today a quirky attraction with boat rides and costumed characters.</p></div></div>
+        <div class="tcard"><span class="li-ico"><svg class="ico"><use href="#i-eye"/></svg></span><div><h3>The National Aquarium</h3><p>In Qawra, the island's largest aquarium, shaped like a starfish along the waterfront and home to many marine species.</p></div></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== PLACES TO EAT ====================== -->
+  <section class="screen" id="eat" data-title="Places To Eat">
+    <div class="page">
+      <h1 class="page-title center">Places to Eat</h1>
+      <p class="lead center">A few of our favourites. Tap any spot for directions.</p>
+
+      <h2 class="sub">Eat · in Valletta</h2>
+      <div class="near-list">
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Sotto+Pinsa+Romana+South+Street+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-fork"/></svg></span><span class="near-info"><span class="near-cat">Italian · Roman pizza</span><span class="near-name">Sotto Pinsa Romana</span></span></span>
+          <span class="near-desc">Classic Italian with exposed stone walls — Roman-style pizza and traditional dishes.</span>
+          <span class="near-dir is-addr"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> 32 South St, Valletta</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Pastaus+Old+Theatre+Street+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-fork"/></svg></span><span class="near-info"><span class="near-cat">Italian · pasta</span><span class="near-name">Pastaus</span></span></span>
+          <span class="near-desc">Authentic Italian pasta, cooked with care.</span>
+          <span class="near-dir is-addr"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> 123 Old Theatre Street, Valletta</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Ta+Nenu+St+Dominic+Street+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-fork"/></svg></span><span class="near-info"><span class="near-cat">Traditional Maltese</span><span class="near-name">Ta' Nenu</span></span></span>
+          <span class="near-desc">A traditional Maltese restaurant in the heart of the capital.</span>
+          <span class="near-dir is-addr"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> 143 St Dominic Street, Valletta</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Porticello+Boat+Street+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-fork"/></svg></span><span class="near-info"><span class="near-cat">Seafood</span><span class="near-name">Porticello</span></span></span>
+          <span class="near-desc">Fresh seafood, seaside vibes and the perfect midday break.</span>
+          <span class="near-dir is-addr"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Boat Street, Valletta</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+      </div>
+
+      <h2 class="sub">Drink</h2>
+      <div class="near-list">
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=The+Bridge+Bar+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-coffee"/></svg></span><span class="near-info"><span class="near-cat">Jazz &amp; wine bar</span><span class="near-name">The Bridge Bar</span></span></span>
+          <span class="near-desc">Top-notch for live jazz and socialising — an electric atmosphere even for newcomers to jazz.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Find on map</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Yard+32+Gin+Bar+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-coffee"/></svg></span><span class="near-info"><span class="near-cat">Gin &amp; tapas</span><span class="near-name">Yard 32</span></span></span>
+          <span class="near-desc">The first gin bar in Malta — over 200 gins and 42 tonic waters.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Find on map</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Toro+Nero+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-coffee"/></svg></span><span class="near-info"><span class="near-cat">Rooftop steak lounge</span><span class="near-name">Toro Nero</span></span></span>
+          <span class="near-desc">Steaks and cocktails with a view, up on the rooftop.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Find on map</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Moon+Cocktail+Bar+Valletta" target="_blank" rel="noopener">
+          <span class="near-head"><span class="near-ico"><svg class="ico"><use href="#i-coffee"/></svg></span><span class="near-info"><span class="near-cat">Cocktail bar</span><span class="near-name">Moon Cocktail Bar</span></span></span>
+          <span class="near-desc">A hidden gem in a Valletta alley, with a unique approach to mixology.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Find on map</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== YOUR NEAREST ====================== -->
+  <section class="screen" id="nearest" data-title="Your Nearest">
+    <div class="page">
+      <h1 class="page-title center">Your Nearest</h1>
+      <p class="lead center">The essentials, all within a short walk. Tap a card for directions.</p>
+      <div class="near-list">
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Tad-Dulcier+Floriana+Malta" target="_blank" rel="noopener">
+          <span class="near-head">
+            <span class="near-ico"><svg class="ico"><use href="#i-coffee"/></svg></span>
+            <span class="near-info"><span class="near-cat">Coffee shop</span><span class="near-name">Tad-Dulċier</span></span>
+            <span class="near-walk"><svg class="ico"><use href="#i-walk"/></svg> 2 min</span>
+          </span>
+          <span class="near-desc">An artisan bakery &amp; coffee shop in the heart of Floriana — homemade cakes, fresh pastries and light lunches.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Get directions</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=SPAR+Express+Valletta+Malta" target="_blank" rel="noopener">
+          <span class="near-head">
+            <span class="near-ico"><svg class="ico"><use href="#i-cart"/></svg></span>
+            <span class="near-info"><span class="near-cat">Grocery store</span><span class="near-name">SPAR Express</span></span>
+            <span class="near-walk"><svg class="ico"><use href="#i-walk"/></svg> 15 min</span>
+          </span>
+          <span class="near-desc">In Valletta — open 24 hours, every day of the week.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Get directions</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Floriana+Dispensary+pharmacy+Malta" target="_blank" rel="noopener">
+          <span class="near-head">
+            <span class="near-ico"><svg class="ico"><use href="#i-cross"/></svg></span>
+            <span class="near-info"><span class="near-cat">Pharmacy</span><span class="near-name">Floriana Dispensary</span></span>
+            <span class="near-walk"><svg class="ico"><use href="#i-walk"/></svg> 2 min</span>
+          </span>
+          <span class="near-desc">Just around the corner, on the next street over.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Get directions</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=Balzunetta+Restaurant+Floriana+Malta" target="_blank" rel="noopener">
+          <span class="near-head">
+            <span class="near-ico"><svg class="ico"><use href="#i-fork"/></svg></span>
+            <span class="near-info"><span class="near-cat">Restaurant</span><span class="near-name">Balzunetta</span></span>
+            <span class="near-walk"><svg class="ico"><use href="#i-walk"/></svg> 2 min</span>
+          </span>
+          <span class="near-desc">Local &amp; Mediterranean cuisine in a welcoming atmosphere, with indoor and outdoor seating.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Get directions</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+        <a class="near-card" href="https://www.google.com/maps/search/?api=1&amp;query=natural+pools+Valletta+Malta" target="_blank" rel="noopener">
+          <span class="near-head">
+            <span class="near-ico"><svg class="ico"><use href="#i-wave"/></svg></span>
+            <span class="near-info"><span class="near-cat">Sea swim</span><span class="near-name">Natural Pool</span></span>
+            <span class="near-walk"><svg class="ico"><use href="#i-walk"/></svg> 15 min</span>
+          </span>
+          <span class="near-desc">A calm natural sea pool behind Valletta, near Boat Street — clean water about 6 ft deep, with parking nearby.</span>
+          <span class="near-dir"><span class="near-dir-l"><svg class="ico"><use href="#i-pin"/></svg> Get directions</span><svg class="ico"><use href="#i-chevron"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== BEFORE YOU GO ====================== -->
+  <section class="screen" id="beforeyougo" data-title="Before You Go">
+    <div class="page">
+      <h1 class="page-title center">Before You Go</h1>
+
+      <h2 class="sub">Tips for your stay</h2>
+      <ol class="tips">
+        <li><span class="num">01</span><p>Dress in layers — you often move quickly between warm and cool spots, so it's best to be ready for both.</p></li>
+        <li><span class="num">02</span><p>Always protect yourself from the sun. The pleasant breeze hides how strong the rays are, so use sunscreen.</p></li>
+        <li><span class="num">03</span><p>Look both ways: traffic drives on the left, the opposite of most of continental Europe.</p></li>
+        <li><span class="num">04</span><p>Malta is very safe and you can get around easily speaking English.</p></li>
+      </ol>
+
+      <h2 class="sub">When you check out</h2>
+      <ul class="checklist">
+        <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Let me know if any damage occurred.</li>
+        <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Leave the keys on the table.</li>
+        <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Close all doors and turn off the lights.</li>
+        <li><span class="cl-ico"><svg class="ico"><use href="#i-check"/></svg></span> Send me a message when you check out.</li>
+      </ul>
+
+      <p class="closing script">Safe travels — and come back soon!</p>
+      <a class="cta" href="#reviews"><svg class="ico ico--fill"><use href="#i-star"/></svg> Loved your stay? Leave a review</a>
+    </div>
+  </section>
+
+  <!-- ====================== FAQ ====================== -->
+  <section class="screen" id="faq" data-title="Q&amp;A">
+    <div class="page">
+      <h1 class="page-title center">Q&amp;A</h1>
+      <div class="accordion">
+        <details><summary>Can I have an early check-in?<svg class="ico chev"><use href="#i-chevron"/></svg></summary><p>We always do our best to accommodate early check-in whenever possible. If your room isn't quite ready, you're welcome to leave your luggage with us and start exploring the city right away.</p></details>
+        <details><summary>Is there Wi-Fi in every room?<svg class="ico chev"><use href="#i-chevron"/></svg></summary><p>Yes, absolutely. We provide high-speed Wi-Fi in every room and, thanks to our extenders, you'll stay connected in the courtyards and on the terraces too.</p></details>
+        <details><summary>Where is the closest grocery store?<svg class="ico chev"><use href="#i-chevron"/></svg></summary><p>About a 15-minute walk away there's a SPAR, open 24/7, seven days a week.</p></details>
+        <details><summary>Where is the closest pharmacy?<svg class="ico chev"><use href="#i-chevron"/></svg></summary><p>The nearest pharmacy is on the next street over, just around the corner.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== REVIEWS ====================== -->
+  <section class="screen" id="reviews" data-title="Guest Reviews">
+    <div class="page">
+      <h1 class="page-title center">Guest Reviews</h1>
+      <img class="rounded full-img" src="assets/img/reviews.jpg" width="1000" height="666" alt="Warm candlelight in the apartment" loading="lazy">
+      <div class="review">
+        <span class="score"><svg class="ico ico--fill"><use href="#i-star"/></svg> 9/10</span>
+        <p>"Excellent location — we could walk everywhere. The house was beautiful and very pleasing to the eye, the kind of place where you genuinely enjoy spending time inside. The host, Dario, is incredibly kind and helpful."</p>
+      </div>
+      <div class="review">
+        <span class="score"><svg class="ico ico--fill"><use href="#i-star"/></svg> 9/10</span>
+        <p>"A fantastic place! Excellent communication with the host, who responded immediately, and we could leave our luggage until the evening of our departure. Delicious coffee and tea were provided too. Truly fantastic."</p>
+      </div>
+      <p class="note center">If you enjoyed your stay with us, please let us know by leaving a review on Booking.</p>
+      <p class="closing script">Thank you!</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/js/qrcode.min.js"></script>
+<script src="assets/js/app.js?v=9"></script>
+</body>
+</html>
