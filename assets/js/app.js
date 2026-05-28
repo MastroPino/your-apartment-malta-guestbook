@@ -157,7 +157,7 @@
     cta.href = 'https://wa.me/35699320097';
     cta.target = '_blank';
     cta.rel = 'noopener';
-    cta.innerHTML = '<svg class="ico"><use href="#i-phone"></use></svg> Message the host';
+    cta.innerHTML = '<svg class="ico"><use href="#i-phone"></use></svg> Send a message to the host';
     page.appendChild(cta);
   });
 
