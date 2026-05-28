@@ -1087,22 +1087,38 @@ em {
 }
 .tcard {
     display: flex;
-    gap: 15px;
-    align-items: flex-start;
+    flex-direction: column;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 16px;
-    padding: 17px;
+    overflow: hidden;
     box-shadow: 0 4px 14px rgba(60, 48, 30, 0.04);
 }
-.tcard .walk {
-    display: inline-block;
-    font-size: 0.66rem;
-    font-weight: 500;
+.tcard-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+    background: var(--cream);
+}
+.tcard-body {
+    padding: 17px 19px 19px;
+}
+.tcard-cat {
+    display: block;
+    font-size: 0.62rem;
     text-transform: uppercase;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.16em;
     color: var(--muted);
-    margin-bottom: 2px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.tcard h3 {
+    margin-bottom: 6px;
+}
+.tcard p {
+    line-height: 1.6;
 }
 
 /* Your Nearest — location cards with directions */
