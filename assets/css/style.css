@@ -214,7 +214,7 @@ a {
     margin: 18px auto 26px;
 }
 .page-title .amp {
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     color: var(--muted);
     font-size: 0.78em;
@@ -262,7 +262,7 @@ a {
     text-align: center;
 }
 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--ink);
 }
 
@@ -521,7 +521,7 @@ em {
 }
 .hc-quote {
     font-family: var(--serif);
-    font-style: italic;
+    font-style: normal;
     font-size: 1rem;
     line-height: 1.55;
     color: var(--ink-soft);
@@ -703,7 +703,7 @@ em {
 }
 .io-when {
     font-size: 0.74rem;
-    font-style: italic;
+    font-style: normal;
     color: var(--muted);
     margin-top: 9px;
     line-height: 1;
@@ -969,7 +969,7 @@ em {
     color: var(--paper);
     text-align: center;
     font-family: var(--serif);
-    font-style: italic;
+    font-style: normal;
     font-size: 1.04rem;
     line-height: 1.5;
 }
@@ -1458,7 +1458,7 @@ em {
     color: var(--ink);
 }
 .review p {
-    font-style: italic;
+    font-style: normal;
     color: var(--ink-soft);
     margin: 0;
 }
@@ -1467,7 +1467,7 @@ em {
 .quote {
     font-family: var(--serif);
     font-size: 1.06rem;
-    font-style: italic;
+    font-style: normal;
     line-height: 1.65;
     color: var(--ink);
     margin: 24px 0;
