@@ -5,6 +5,8 @@
    =================================================================== */
 
 :root {
+    color-scheme: light dark;
+
     --serif: "Playfair Display", Georgia, "Times New Roman", serif;
     --sans:
         "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
@@ -28,6 +30,22 @@
     --shadow:
         0 1px 2px rgba(40, 32, 20, 0.04), 0 14px 40px rgba(60, 48, 30, 0.07);
     --topbar-h: 58px;
+}
+
+/* ===== Dark mode tokens (re-mapped further down at end of file) ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #15110b;
+        --bg: #0a0805;
+        --ink: #f1ead9;
+        --ink-soft: #c5b9a1;
+        --muted: #807665;
+        --cream: #1d1810;
+        --cream-2: #271f15;
+        --line: #2c2418;
+        --line-2: #3a3022;
+        --white: #1f1a12;
+    }
 }
 
 * {
@@ -1563,5 +1581,25 @@ em {
     }
     * {
         scroll-behavior: auto !important;
+    }
+}
+
+/* ===== Dark mode — overrides for hardcoded colors (kept at end of file
+   so they win the cascade against the base .topbar / .sec-nav / body rules) ===== */
+@media (prefers-color-scheme: dark) {
+    .topbar {
+        background: rgba(21, 17, 11, 0.78);
+    }
+    .sec-nav {
+        background: rgba(21, 17, 11, 0.88);
+    }
+}
+@media (prefers-color-scheme: dark) and (min-width: 540px) {
+    body {
+        background: radial-gradient(
+            140% 120% at 50% 0%,
+            #1a1610 0%,
+            var(--bg) 70%
+        );
     }
 }

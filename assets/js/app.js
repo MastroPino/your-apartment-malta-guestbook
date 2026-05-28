@@ -124,18 +124,26 @@
     updateSectionChips();
   }, { passive: true });
 
-  /* ---- Wi-Fi QR code (scan to join) ---- */
+  /* ---- Wi-Fi QR code (scan to join) — re-renders if OS toggles dark mode ---- */
   var qrEl = document.getElementById('wifi-qr');
-  if (qrEl && window.QRCode) {
-    // WIFI:T:<auth>;S:<ssid>;P:<password>;; — scannable by iOS/Android camera
+  var darkMq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function renderWifiQr() {
+    if (!qrEl || !window.QRCode) { return; }
+    qrEl.innerHTML = '';
+    var dark = darkMq && darkMq.matches;
     new window.QRCode(qrEl, {
+      // WIFI:T:<auth>;S:<ssid>;P:<password>;; — scannable by iOS/Android camera
       text: 'WIFI:T:WPA;S:Your Apartment;P:yourapartment85;;',
       width: 340,
       height: 340,
-      colorDark: '#201b15',
-      colorLight: '#ffffff',
+      colorDark: dark ? '#f1ead9' : '#201b15',
+      colorLight: dark ? '#1f1a12' : '#ffffff',
       correctLevel: window.QRCode.CorrectLevel.M
     });
+  }
+  renderWifiQr();
+  if (darkMq && darkMq.addEventListener) {
+    darkMq.addEventListener('change', renderWifiQr);
   }
 
   /* ---- Universal "Message the host" CTA on section pages ---- */
