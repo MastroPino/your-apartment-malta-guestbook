@@ -138,6 +138,21 @@
     });
   }
 
+  /* ---- Universal "Message the host" CTA on section pages ---- */
+  var ctaSkip = { home: 1, host: 1, kitchen: 1 };
+  document.querySelectorAll('.screen').forEach(function (s) {
+    if (ctaSkip[s.id]) { return; }
+    var page = s.querySelector('.page');
+    if (!page || page.querySelector('.cta-host-msg')) { return; }
+    var cta = document.createElement('a');
+    cta.className = 'cta cta-host-msg';
+    cta.href = 'https://wa.me/35699320097';
+    cta.target = '_blank';
+    cta.rel = 'noopener';
+    cta.innerHTML = '<svg class="ico"><use href="#i-phone"></use></svg> Message the host';
+    page.appendChild(cta);
+  });
+
   /* ---- Boot ---- */
   render();
   window.scrollTo(0, 0);
