@@ -322,6 +322,8 @@ em {
     height: 100%;
     object-fit: cover;
     border-radius: 14px;
+    min-width: 0;
+    min-width: 0;
 }
 .collage .tall {
     grid-row: 1 / span 2;
@@ -333,18 +335,41 @@ em {
     margin-top: 4px;
 }
 .hero-address {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 0.86rem;
-    color: var(--muted);
-    margin-top: 2px;
+    gap: 9px;
+    padding: 10px 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: var(--white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.15s;
 }
 .hero-address .ico {
     width: 15px;
     height: 15px;
     color: var(--ink);
+}
+.hero-address .chev {
+    width: 13px;
+    height: 13px;
+    color: var(--muted);
+    margin-left: 1px;
+}
+.hero-address:active {
+    transform: scale(0.985);
+}
+@media (hover: hover) {
+    .hero-address:hover {
+        border-color: var(--ink-soft);
+        box-shadow: 0 6px 16px rgba(60, 48, 30, 0.08);
+    }
 }
 
 /* Menu */
