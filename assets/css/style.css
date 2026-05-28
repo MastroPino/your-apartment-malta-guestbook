@@ -323,7 +323,7 @@ em {
     object-fit: cover;
     border-radius: 14px;
     min-width: 0;
-    min-width: 0;
+    min-height: 0;
 }
 .collage .tall {
     grid-row: 1 / span 2;
