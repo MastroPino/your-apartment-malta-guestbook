@@ -161,6 +161,15 @@
     page.appendChild(cta);
   });
 
+  /* ---- Brand footer (dark logo strip) appended to every screen ---- */
+  document.querySelectorAll('.screen').forEach(function (s) {
+    if (s.querySelector('.brand-footer')) { return; }
+    var bf = document.createElement('footer');
+    bf.className = 'brand-footer';
+    bf.innerHTML = '<img class="brand-logo" src="assets/img/logo-dark.svg" alt="Your Apartment Malta" width="432" height="333">';
+    s.appendChild(bf);
+  });
+
   /* ---- Boot ---- */
   render();
   window.scrollTo(0, 0);

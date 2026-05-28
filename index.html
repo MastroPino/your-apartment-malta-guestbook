@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=16">
+<link rel="stylesheet" href="assets/css/style.css?v=17">
 </head>
 <body>
 
@@ -74,7 +74,12 @@
   <section class="screen is-active" id="home">
     <header class="hero">
       <p class="eyebrow">Welcome to</p>
-      <h1 class="script hero-title">Your Apartment Malta</h1>
+      <h1 class="hero-title hero-logo">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-dark.svg">
+          <img src="assets/img/logo-light.svg" alt="Your Apartment Malta" width="432" height="333">
+        </picture>
+      </h1>
       <div class="collage">
         <img class="tall" src="assets/img/apt-chalkboard.jpg" width="760" height="1651" alt="Dining area with a Valletta skyline chalk drawing">
         <img src="assets/img/apt-living.jpg" width="1100" height="825" alt="Bright double-height living and dining room">
@@ -651,6 +656,6 @@
 </div>
 
 <script src="assets/js/qrcode.min.js"></script>
-<script src="assets/js/app.js?v=11"></script>
+<script src="assets/js/app.js?v=12"></script>
 </body>
 </html>

@@ -323,6 +323,18 @@ em {
     font-size: clamp(2.7rem, 13vw, 3.6rem);
     margin-bottom: 22px;
 }
+.hero-logo {
+    margin: 4px auto 22px;
+    line-height: 0;
+}
+.hero-logo picture,
+.hero-logo img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
 
 .collage {
     display: grid;
@@ -1582,6 +1594,23 @@ em {
     * {
         scroll-behavior: auto !important;
     }
+}
+
+/* ===== Brand footer (logo strip at the end of every screen) =====
+   Always uses the dark colourway, regardless of the OS color scheme. */
+.brand-footer {
+    background: #15110b;
+    padding: 30px var(--pad) calc(30px + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: center;
+    /* subtle hairline so the strip stays distinguishable in dark mode */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.brand-logo {
+    display: block;
+    width: 100%;
+    max-width: 170px;
+    height: auto;
 }
 
 /* ===== Dark mode — overrides for hardcoded colors (kept at end of file
