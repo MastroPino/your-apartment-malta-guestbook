@@ -7,34 +7,73 @@
 :root {
     color-scheme: light dark;
 
-    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-    --sans:
+    /* =================================================================
+       PUBLIC BRAND API — change these values to re-skin the guidebook.
+       (Load the matching webfonts in the <head> of index.html.)
+       ================================================================= */
+
+    /* --- Typography -------------------------------------------------- */
+    --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --font-body:
         "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
         sans-serif;
-    --script: "Sacramento", "Segoe Script", cursive;
+    --font-accent: "Sacramento", "Segoe Script", cursive;
 
-    --paper: #fdfbf7;
-    --bg: #e7ded0;
-    --ink: #201b15;
-    --ink-soft: #5d554a;
-    --muted: #a39a8a;
-    --cream: #f2eae0;
+    /* --- Brand palette ----------------------------------------------- */
+    --brand-primary: #201b15;        /* CTAs, banners, medal, host badge */
+    --brand-on-primary: #fdfbf7;     /* readable fg on --brand-primary    */
+    --brand-footer-bg: #15110b;      /* always-dark strip at page bottom  */
+
+    /* --- Surface palette --------------------------------------------- */
+    --paper: #fdfbf7;                /* page background                   */
+    --ink: #201b15;                  /* primary text                      */
+    --ink-soft: #5d554a;             /* secondary text                    */
+    --muted: #a39a8a;                /* tertiary text, labels             */
+    --cream: #f2eae0;                /* card / panel background           */
+
+    /* --- Corner radii ------------------------------------------------ */
+    --radius-sm: 12px;               /* accordion, small buttons          */
+    --radius-md: 14px;               /* CTA, avatar, collage images       */
+    --radius-lg: 16px;               /* standard cards                    */
+    --radius-xl: 22px;               /* premium cards (wifi, host-card)   */
+    --radius-pill: 999px;            /* pills, chips                      */
+
+    /* =================================================================
+       INTERNAL TOKENS — implementation details. Rarely changed; bigger
+       structural rework needed if you tweak these.
+       ================================================================= */
+
+    /* Legacy font aliases — existing rules reference these names */
+    --serif: var(--font-display);
+    --sans: var(--font-body);
+    --script: var(--font-accent);
+
+    /* Legacy radius alias for content images (was 18px, now standard 16) */
+    --radius: var(--radius-lg);
+
+    /* Internal surface tones */
+    --bg: #e7ded0;                   /* page backdrop on wide screens     */
     --cream-2: #ece2d4;
     --line: #ece4d7;
     --line-2: #e2d8c8;
-    --white: #ffffff;
+    --white: #ffffff;                /* elevated white surface            */
 
+    /* Layout */
     --maxw: 480px;
     --pad: 24px;
-    --radius: 18px;
     --shadow:
         0 1px 2px rgba(40, 32, 20, 0.04), 0 14px 40px rgba(60, 48, 30, 0.07);
     --topbar-h: 58px;
 }
 
-/* ===== Dark mode tokens (re-mapped further down at end of file) ===== */
+/* ===== Dark mode tokens (translucent topbar/sec-nav rules at end) ===== */
 @media (prefers-color-scheme: dark) {
     :root {
+        /* brand inverts: a warm cream becomes the accent, dark becomes fg */
+        --brand-primary: #f1ead9;
+        --brand-on-primary: #15110b;
+
+        /* surfaces */
         --paper: #15110b;
         --bg: #0a0805;
         --ink: #f1ead9;
@@ -353,7 +392,7 @@ em {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     min-width: 0;
     min-height: 0;
 }
@@ -373,7 +412,7 @@ em {
     padding: 10px 18px;
     margin-top: 14px;
     border: 1px solid var(--line-2);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     background: var(--white);
     font-size: 0.85rem;
     font-weight: 500;
@@ -468,7 +507,7 @@ em {
     background: var(--white);
     color: var(--ink);
     border: 1px solid var(--line);
-    border-radius: 24px;
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow);
     max-width: 380px;
     margin: 0 auto;
@@ -495,8 +534,8 @@ em {
     width: 33px;
     height: 33px;
     border-radius: 50%;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
     display: grid;
     place-items: center;
     border: 2.5px solid var(--white);
@@ -571,13 +610,13 @@ em {
     gap: 7px;
     align-self: stretch;
     padding: 13px;
-    border: 1.5px solid var(--ink);
-    border-radius: 12px;
+    border: 1.5px solid var(--brand-primary);
+    border-radius: var(--radius-sm);
     font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--ink);
+    color: var(--brand-primary);
     transition:
         background 0.22s ease,
         color 0.22s ease;
@@ -587,13 +626,13 @@ em {
     height: 14px;
 }
 .host-card:active .hc-cta {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
 }
 @media (hover: hover) {
     .host-card:hover .hc-cta {
-        background: var(--ink);
-        color: var(--paper);
+        background: var(--brand-primary);
+        color: var(--brand-on-primary);
     }
 }
 
@@ -611,7 +650,7 @@ em {
     gap: 7px;
     padding: 7px 16px;
     border: 1px solid var(--line-2);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     background: var(--cream);
     font-size: 0.7rem;
     font-weight: 600;
@@ -656,7 +695,7 @@ em {
     gap: 9px;
     padding: 11px 20px;
     border: 1px solid var(--line-2);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.85rem;
     color: var(--ink);
     background: var(--white);
@@ -709,7 +748,7 @@ em {
 }
 .io-card {
     background: var(--cream);
-    border-radius: 18px;
+    border-radius: var(--radius-lg);
     padding: 22px 12px 20px;
     display: flex;
     flex-direction: column;
@@ -856,7 +895,7 @@ em {
     gap: 14px;
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 22px;
+    border-radius: var(--radius-xl);
     padding: 26px 24px;
     margin: 6px 0 12px;
     box-shadow: var(--shadow);
@@ -883,7 +922,7 @@ em {
 }
 .wifi-card {
     background: var(--cream);
-    border-radius: 22px;
+    border-radius: var(--radius-xl);
     padding: 8px 22px;
     margin: 6px 0;
 }
@@ -933,12 +972,12 @@ em {
     flex-direction: column;
     align-items: center;
     gap: 2px;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
     border: none;
     cursor: pointer;
     padding: 9px 12px;
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     font-family: var(--sans);
     transition: transform 0.15s;
 }
@@ -996,14 +1035,14 @@ em {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--ink);
+    background: var(--brand-primary);
 }
 .banner {
     margin-top: 24px;
     padding: 22px 24px;
     border-radius: var(--radius);
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
     text-align: center;
     font-family: var(--serif);
     font-style: normal;
@@ -1022,7 +1061,7 @@ em {
     gap: 15px;
     align-items: flex-start;
     background: var(--cream);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 18px;
 }
 .emg-tel {
@@ -1038,9 +1077,9 @@ em {
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 18px;
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
+    border-radius: var(--radius-lg);
     padding: 18px 22px;
     margin-bottom: 16px;
 }
@@ -1110,7 +1149,7 @@ em {
     margin-top: 14px;
     padding: 18px;
     border: 1px dashed var(--line-2);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
 }
 
 /* stack cards (things to do / eat / nearest) */
@@ -1124,7 +1163,7 @@ em {
     flex-direction: column;
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 4px 14px rgba(60, 48, 30, 0.04);
 }
@@ -1176,7 +1215,7 @@ em {
     background: rgba(20, 16, 11, 0.86);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.66rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -1202,7 +1241,7 @@ em {
     display: block;
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 16px 17px 13px;
     box-shadow: 0 4px 14px rgba(60, 48, 30, 0.04);
     color: var(--ink);
@@ -1258,7 +1297,7 @@ em {
     align-items: center;
     gap: 5px;
     background: var(--cream);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     padding: 6px 11px;
     font-size: 0.74rem;
     font-weight: 600;
@@ -1337,7 +1376,7 @@ em {
     background: var(--white);
     color: var(--ink-soft);
     padding: 8px 16px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-family: var(--sans);
     font-size: 0.78rem;
     font-weight: 500;
@@ -1349,8 +1388,8 @@ em {
         border-color 0.2s;
 }
 .sec-chip.is-active {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
     border-color: var(--ink);
 }
 .ttd-sec {
@@ -1472,7 +1511,7 @@ em {
 }
 .accordion details {
     background: var(--cream);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     overflow: hidden;
 }
 .accordion summary {
@@ -1512,7 +1551,7 @@ em {
 /* reviews */
 .review {
     background: var(--cream);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 20px 22px;
     margin-bottom: 14px;
 }
@@ -1560,7 +1599,7 @@ em {
     gap: 14px;
     padding: 14px 18px;
     background: var(--cream);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     font-size: 0.95rem;
     color: var(--ink);
 }
@@ -1593,9 +1632,9 @@ em {
     margin-top: 40px;
     margin-bottom: 12px;
     padding: 16px;
-    border-radius: 14px;
-    background: var(--ink);
-    color: var(--paper);
+    border-radius: var(--radius-md);
+    background: var(--brand-primary);
+    color: var(--brand-on-primary);
     font-size: 0.92rem;
     font-weight: 500;
     letter-spacing: 0.02em;
@@ -1643,7 +1682,7 @@ em {
 /* ===== Brand footer (logo strip at the end of every screen) =====
    Always uses the dark colourway, regardless of the OS color scheme. */
 .brand-footer {
-    background: #15110b;
+    background: var(--brand-footer-bg);
     padding: 30px var(--pad) calc(30px + env(safe-area-inset-bottom));
     display: flex;
     justify-content: center;
