@@ -309,6 +309,7 @@ em {
     min-height: 90dvh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: calc(38px + env(safe-area-inset-top)) var(--pad) 4px;
     text-align: center;
 }
