@@ -20,23 +20,23 @@
     --font-accent: "Sacramento", "Segoe Script", cursive;
 
     /* --- Brand palette ----------------------------------------------- */
-    --brand-primary: #201b15;        /* CTAs, banners, medal, host badge */
-    --brand-on-primary: #fdfbf7;     /* readable fg on --brand-primary    */
-    --brand-footer-bg: #15110b;      /* always-dark strip at page bottom  */
+    --brand-primary: #201b15; /* CTAs, banners, medal, host badge */
+    --brand-on-primary: #fdfbf7; /* readable fg on --brand-primary    */
+    --brand-footer-bg: #15110b; /* always-dark strip at page bottom  */
 
     /* --- Surface palette --------------------------------------------- */
-    --paper: #fdfbf7;                /* page background                   */
-    --ink: #201b15;                  /* primary text                      */
-    --ink-soft: #5d554a;             /* secondary text                    */
-    --muted: #a39a8a;                /* tertiary text, labels             */
-    --cream: #f2eae0;                /* card / panel background           */
+    --paper: #fdfbf7; /* page background                   */
+    --ink: #201b15; /* primary text                      */
+    --ink-soft: #5d554a; /* secondary text                    */
+    --muted: #a39a8a; /* tertiary text, labels             */
+    --cream: #f2eae0; /* card / panel background           */
 
     /* --- Corner radii ------------------------------------------------ */
-    --radius-sm: 12px;               /* accordion, small buttons          */
-    --radius-md: 14px;               /* CTA, avatar, collage images       */
-    --radius-lg: 16px;               /* standard cards                    */
-    --radius-xl: 22px;               /* premium cards (wifi, host-card)   */
-    --radius-pill: 999px;            /* pills, chips                      */
+    --radius-sm: 12px; /* accordion, small buttons          */
+    --radius-md: 14px; /* CTA, avatar, collage images       */
+    --radius-lg: 16px; /* standard cards                    */
+    --radius-xl: 22px; /* premium cards (wifi, host-card)   */
+    --radius-pill: 999px; /* pills, chips                      */
 
     /* =================================================================
        INTERNAL TOKENS — implementation details. Rarely changed; bigger
@@ -52,11 +52,11 @@
     --radius: var(--radius-lg);
 
     /* Internal surface tones */
-    --bg: #e7ded0;                   /* page backdrop on wide screens     */
+    --bg: #e7ded0; /* page backdrop on wide screens     */
     --cream-2: #ece2d4;
     --line: #ece4d7;
     --line-2: #e2d8c8;
-    --white: #ffffff;                /* elevated white surface            */
+    --white: #ffffff; /* elevated white surface            */
 
     /* Layout */
     --maxw: 480px;
@@ -129,6 +129,8 @@ a {
     background: var(--paper);
     box-shadow: 0 0 70px rgba(50, 38, 22, 0.14);
     overflow-x: clip; /* clip horizontal only; keeps window as scroll root so sticky works */
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
 }
 
 /* ---------- Icons ---------- */
@@ -356,7 +358,9 @@ em {
    centered phone-frame, but 90dvh still resolves to the FULL window
    height — that makes the collage stretch unnaturally tall. Cap it. */
 @media (min-width: 540px) {
-    .hero { min-height: min(90dvh, 760px); }
+    .hero {
+        min-height: min(90dvh, 760px);
+    }
 }
 .hero .eyebrow {
     font-family: var(--serif);
