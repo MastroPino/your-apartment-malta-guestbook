@@ -635,7 +635,7 @@ em {
 /* Footer */
 .home-footer {
     text-align: center;
-    padding: 14px var(--pad) calc(40px + env(safe-area-inset-bottom));
+    padding: 2rem var(--pad) calc(40px + env(safe-area-inset-bottom));
 }
 .home-footer-script {
     font-size: 2.4rem;
