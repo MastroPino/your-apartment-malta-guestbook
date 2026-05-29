@@ -352,6 +352,12 @@ em {
     padding: calc(38px + env(safe-area-inset-top)) var(--pad) 4px;
     text-align: center;
 }
+/* On wide viewports (desktop preview, tablet landscape) the app is a
+   centered phone-frame, but 90dvh still resolves to the FULL window
+   height — that makes the collage stretch unnaturally tall. Cap it. */
+@media (min-width: 540px) {
+    .hero { min-height: min(90dvh, 760px); }
+}
 .hero .eyebrow {
     font-family: var(--serif);
     font-weight: 400;
