@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=17">
+<link rel="stylesheet" href="assets/css/style.css?v=18">
 </head>
 <body>
 
@@ -358,7 +358,6 @@
   <section class="screen" id="thingstodo" data-title="Things to do">
     <div class="page">
       <h1 class="page-title center">Things to Do</h1>
-      <img class="rounded full-img" src="assets/img/malta-sea.jpg" width="1000" height="1500" alt="Palm tree by the Maltese coast" loading="lazy">
       <nav class="sec-nav" aria-label="Jump to section">
         <button class="sec-chip is-active" type="button" data-scroll-to="ttd-exp">Experiences</button>
         <button class="sec-chip" type="button" data-scroll-to="ttd-see">Places to see</button>
@@ -367,13 +366,19 @@
       <div class="ttd-sec" id="ttd-exp">
       <h2 class="sub">Experiences</h2>
       <div class="stack-cards">
-        <div class="tcard">
-          <img class="tcard-img" src="assets/img/ttd-sailing.jpg" width="600" height="375" alt="Aperitif on board sailing the Maltese coast" loading="lazy">
+        <div class="tcard tcard--host">
+          <div class="tcard-imgwrap">
+            <img class="tcard-img" src="assets/img/ttd-sailing.jpg" width="600" height="375" alt="Aperitif on board Ela, sailing the Maltese coast" loading="lazy">
+            <span class="tcard-host-badge" aria-hidden="true">
+              <img src="assets/img/host.jpg" alt="" width="820" height="1092">
+              <span>Hosted by Dario</span>
+            </span>
+          </div>
           <div class="tcard-body">
-            <span class="tcard-cat">Boat experience</span>
+            <span class="tcard-cat">Boat experience · aboard <em>Ela</em></span>
             <h3>Sailing around Malta</h3>
-            <p>Spend a day with us aboard <em>Ela</em>, sailing the Maltese coast and tasting a traditional Italian aperitif.</p>
-            <a class="inline-action" href="https://yourapartmentmalta.com/sailing" target="_blank" rel="noopener"><svg class="ico"><use href="#i-anchor"/></svg> <span class="txt">Book your sailing</span></a>
+            <p>Spend a day with us aboard <em>Ela</em>, Dario's own sailboat, gliding along the Maltese coast and sharing a traditional Italian aperitif on deck.</p>
+            <a class="inline-action" href="https://yourapartmentmalta.com/sailing" target="_blank" rel="noopener"><svg class="ico"><use href="#i-anchor"/></svg> <span class="txt">Book your sailing day</span></a>
           </div>
         </div>
         <div class="tcard">
