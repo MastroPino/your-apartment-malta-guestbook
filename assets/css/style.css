@@ -306,6 +306,9 @@ em {
    HOME
    ================================================================= */
 .hero {
+    min-height: 90dvh;
+    display: flex;
+    flex-direction: column;
     padding: calc(38px + env(safe-area-inset-top)) var(--pad) 4px;
     text-align: center;
 }
@@ -341,8 +344,9 @@ em {
     grid-template-columns: 1.05fr 0.95fr;
     grid-template-rows: repeat(2, 1fr);
     gap: 8px;
-    height: 340px;
-    margin-bottom: 20px;
+    flex: 1 1 0; /* basis 0 so the collage doesn't push the hero past 90dvh — it only grows into the remaining space */
+    min-height: 220px;
+    margin-bottom: 48px; /* generous breathing room before "Enjoy your stay" */
 }
 .collage img {
     width: 100%;
