@@ -1867,6 +1867,11 @@ em {
     .map-card-frame.leaflet-container {
         background: var(--cream-2);
     }
+    /* CARTO Dark Matter is near-black; lift it toward a softer Apple-Maps
+       grey so streets and labels stay legible. */
+    .map-card-frame .leaflet-tile {
+        filter: brightness(1.9) contrast(0.88) saturate(1.12);
+    }
     .map-card-overlay {
         background: rgba(20, 16, 10, 0.72);
         color: #f1ead9;
