@@ -67,26 +67,27 @@
 }
 
 /* ===== Dark mode tokens (translucent topbar/sec-nav rules at end) =====
-   LIGHT MODE PAUSED: this palette is forced on via <html data-theme="dark">,
-   so it no longer waits for the OS. To re-enable auto/light, wrap this rule
-   back in `@media (prefers-color-scheme: dark) { :root { … } }` and remove
-   data-theme="dark" from <html>. (Same for the 3 dark blocks at end of file.) */
-:root[data-theme="dark"] {
-    /* brand inverts: a warm cream becomes the accent, dark becomes fg */
-    --brand-primary: #f1ead9;
-    --brand-on-primary: #15110b;
+   FORCED-DARK: light mode paused. To re-enable system theme, change every
+   "@media all" wrapper marked FORCED-DARK back to "@media (prefers-color-scheme: dark)". */
+@media all /* FORCED-DARK */ {
+    :root {
+        color-scheme: dark;
+        /* brand inverts: a warm cream becomes the accent, dark becomes fg */
+        --brand-primary: #f1ead9;
+        --brand-on-primary: #15110b;
 
-    /* surfaces */
-    --paper: #15110b;
-    --bg: #0a0805;
-    --ink: #f1ead9;
-    --ink-soft: #c5b9a1;
-    --muted: #807665;
-    --cream: #1d1810;
-    --cream-2: #271f15;
-    --line: #2c2418;
-    --line-2: #3a3022;
-    --white: #1f1a12;
+        /* surfaces */
+        --paper: #15110b;
+        --bg: #0a0805;
+        --ink: #f1ead9;
+        --ink-soft: #c5b9a1;
+        --muted: #807665;
+        --cream: #1d1810;
+        --cream-2: #271f15;
+        --line: #2c2418;
+        --line-2: #3a3022;
+        --white: #1f1a12;
+    }
 }
 
 * {
@@ -1710,15 +1711,17 @@ em {
 
 /* ===== Dark mode — overrides for hardcoded colors (kept at end of file
    so they win the cascade against the base .topbar / .sec-nav / body rules).
-   LIGHT MODE PAUSED: gated on [data-theme="dark"] instead of the OS media query. ===== */
-[data-theme="dark"] .topbar {
-    background: rgba(21, 17, 11, 0.78);
+   FORCED-DARK: light mode paused (was @media (prefers-color-scheme: dark)). ===== */
+@media all /* FORCED-DARK */ {
+    .topbar {
+        background: rgba(21, 17, 11, 0.78);
+    }
+    .sec-nav {
+        background: rgba(21, 17, 11, 0.88);
+    }
 }
-[data-theme="dark"] .sec-nav {
-    background: rgba(21, 17, 11, 0.88);
-}
-@media (min-width: 540px) {
-    [data-theme="dark"] body {
+@media (min-width: 540px) /* FORCED-DARK */ {
+    body {
         background: radial-gradient(
             140% 120% at 50% 0%,
             #1a1610 0%,
@@ -1857,20 +1860,22 @@ em {
     text-underline-offset: 2px;
 }
 /* Dark mode: the map switches to CARTO Dark Matter tiles in JS, so here
-   we only re-theme the chrome around it. LIGHT MODE PAUSED: gated on
-   [data-theme="dark"] instead of the OS media query. */
-[data-theme="dark"] .map-card-frame,
-[data-theme="dark"] .map-card-frame.leaflet-container {
-    background: var(--cream-2);
-}
-[data-theme="dark"] .map-card-overlay {
-    background: rgba(20, 16, 10, 0.72);
-    color: #f1ead9;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-[data-theme="dark"] .map-card-cta {
-    color: rgba(241, 234, 217, 0.6);
-}
-[data-theme="dark"] .map-attribution a {
-    text-decoration-color: rgba(255, 255, 255, 0.2);
+   we only re-theme the chrome around it. FORCED-DARK: light mode paused
+   (was @media (prefers-color-scheme: dark)). */
+@media all /* FORCED-DARK */ {
+    .map-card-frame,
+    .map-card-frame.leaflet-container {
+        background: var(--cream-2);
+    }
+    .map-card-overlay {
+        background: rgba(20, 16, 10, 0.72);
+        color: #f1ead9;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+    .map-card-cta {
+        color: rgba(241, 234, 217, 0.6);
+    }
+    .map-attribution a {
+        text-decoration-color: rgba(255, 255, 255, 0.2);
+    }
 }
