@@ -170,6 +170,59 @@
     s.appendChild(bf);
   });
 
+  /* ---- Map card: send Apple devices to Apple Maps, everyone else to Google Maps ---- */
+  var mapLink = document.querySelector('[data-map-link]');
+  if (mapLink) {
+    var ua = navigator.userAgent || '';
+    var isApple = /iPhone|iPad|iPod|Macintosh/i.test(ua);
+    var nextHref = mapLink.getAttribute(isApple ? 'data-apple-href' : 'data-google-href');
+    if (nextHref) { mapLink.setAttribute('href', nextHref); }
+  }
+
+  /* ---- Map card: render a non-interactive Leaflet preview ----
+     CARTO Voyager (light) and Dark Matter (dark) are both free, key-less
+     OSM-derived tile sets that look closer to Apple Maps than stock Mapnik.
+     All Leaflet interaction is disabled so the whole card stays a tap-to-open
+     surface for the parent <a>. */
+  var mapEl = document.getElementById('address-map');
+  if (mapEl && typeof L !== 'undefined') {
+    var lat = parseFloat(mapEl.getAttribute('data-lat'));
+    var lng = parseFloat(mapEl.getAttribute('data-lng'));
+    if (isFinite(lat) && isFinite(lng)) {
+      var isDarkMap = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var tileUrl = isDarkMap
+        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+
+      var addressMap = L.map(mapEl, {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false
+      }).setView([lat, lng], 16);
+
+      L.tileLayer(tileUrl, { subdomains: 'abcd', maxZoom: 19 }).addTo(addressMap);
+
+      var pinSvg =
+        '<svg viewBox="0 0 36 44" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M18 2C9 2 2.5 8.5 2.5 17c0 10 15.5 25 15.5 25s15.5-15 15.5-25C33.5 8.5 27 2 18 2z" fill="#e0252a" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>' +
+          '<circle cx="18" cy="17" r="5" fill="#fff"/>' +
+        '</svg>';
+      var pinIcon = L.divIcon({
+        className: 'map-pin',
+        html: pinSvg,
+        iconSize: [36, 44],
+        iconAnchor: [18, 42]
+      });
+      L.marker([lat, lng], { icon: pinIcon, keyboard: false, interactive: false }).addTo(addressMap);
+    }
+  }
+
   /* ---- Boot ---- */
   render();
   window.scrollTo(0, 0);
