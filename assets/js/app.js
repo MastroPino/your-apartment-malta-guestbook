@@ -124,13 +124,23 @@
     updateSectionChips();
   }, { passive: true });
 
+  /* ---- Resolve the active theme. LIGHT MODE PAUSED: <html data-theme="dark">
+     forces dark; with no attribute we fall back to the OS preference, so the QR
+     colors and map tiles stay correct if auto-mode is restored later. ---- */
+  function prefersDark() {
+    var forced = document.documentElement.getAttribute('data-theme');
+    if (forced === 'dark') { return true; }
+    if (forced === 'light') { return false; }
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
   /* ---- Wi-Fi QR code (scan to join) — re-renders if OS toggles dark mode ---- */
   var qrEl = document.getElementById('wifi-qr');
   var darkMq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
   function renderWifiQr() {
     if (!qrEl || !window.QRCode) { return; }
     qrEl.innerHTML = '';
-    var dark = darkMq && darkMq.matches;
+    var dark = prefersDark();
     new window.QRCode(qrEl, {
       // WIFI:T:<auth>;S:<ssid>;P:<password>;; — scannable by iOS/Android camera
       text: 'WIFI:T:WPA;S:Your Apartment;P:yourapartment85;;',
@@ -189,7 +199,7 @@
     var lat = parseFloat(mapEl.getAttribute('data-lat'));
     var lng = parseFloat(mapEl.getAttribute('data-lng'));
     if (isFinite(lat) && isFinite(lng)) {
-      var isDarkMap = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDarkMap = prefersDark();
       var tileUrl = isDarkMap
         ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
         : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
