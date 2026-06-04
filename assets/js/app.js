@@ -130,7 +130,7 @@
   function renderWifiQr() {
     if (!qrEl || !window.QRCode) { return; }
     qrEl.innerHTML = '';
-    var dark = darkMq && darkMq.matches;
+    var dark = true; /* FORCED-DARK was: matchMedia('(prefers-color-scheme: dark)').matches */
     new window.QRCode(qrEl, {
       // WIFI:T:<auth>;S:<ssid>;P:<password>;; — scannable by iOS/Android camera
       text: 'WIFI:T:WPA;S:Your Apartment;P:yourapartment85;;',
@@ -189,7 +189,7 @@
     var lat = parseFloat(mapEl.getAttribute('data-lat'));
     var lng = parseFloat(mapEl.getAttribute('data-lng'));
     if (isFinite(lat) && isFinite(lng)) {
-      var isDarkMap = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDarkMap = true; /* FORCED-DARK was: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches */
       var tileUrl = isDarkMap
         ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
         : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
