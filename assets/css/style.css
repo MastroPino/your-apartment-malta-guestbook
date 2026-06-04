@@ -66,12 +66,9 @@
     --topbar-h: 58px;
 }
 
-/* ===== Dark mode tokens (translucent topbar/sec-nav rules at end) =====
-   FORCED-DARK: light mode paused. To re-enable system theme, change every
-   "@media all" wrapper marked FORCED-DARK back to "@media (prefers-color-scheme: dark)". */
-@media all /* FORCED-DARK */ {
+/* ===== Dark mode tokens (translucent topbar/sec-nav rules at end) ===== */
+@media (prefers-color-scheme: dark) {
     :root {
-        color-scheme: dark;
         /* brand inverts: a warm cream becomes the accent, dark becomes fg */
         --brand-primary: #f1ead9;
         --brand-on-primary: #15110b;
@@ -1710,9 +1707,8 @@ em {
 }
 
 /* ===== Dark mode — overrides for hardcoded colors (kept at end of file
-   so they win the cascade against the base .topbar / .sec-nav / body rules).
-   FORCED-DARK: light mode paused (was @media (prefers-color-scheme: dark)). ===== */
-@media all /* FORCED-DARK */ {
+   so they win the cascade against the base .topbar / .sec-nav / body rules) ===== */
+@media (prefers-color-scheme: dark) {
     .topbar {
         background: rgba(21, 17, 11, 0.78);
     }
@@ -1720,7 +1716,7 @@ em {
         background: rgba(21, 17, 11, 0.88);
     }
 }
-@media (min-width: 540px) /* FORCED-DARK */ {
+@media (prefers-color-scheme: dark) and (min-width: 540px) {
     body {
         background: radial-gradient(
             140% 120% at 50% 0%,
@@ -1860,9 +1856,8 @@ em {
     text-underline-offset: 2px;
 }
 /* Dark mode: the map switches to CARTO Dark Matter tiles in JS, so here
-   we only re-theme the chrome around it. FORCED-DARK: light mode paused
-   (was @media (prefers-color-scheme: dark)). */
-@media all /* FORCED-DARK */ {
+   we only re-theme the chrome around it. Kept at end-of-file per cascade. */
+@media (prefers-color-scheme: dark) {
     .map-card-frame,
     .map-card-frame.leaflet-container {
         background: var(--cream-2);
